@@ -112,7 +112,8 @@ export const reserveBook = async(req, res) => {
     }
     const now = new Date();
     const expire = new Date(now);
-    expire.setHours(now.getHours() + 2);
+    // expire.setHours(now.getHours() + 2);
+    expire.setMinutes(now.getMinutes() + 2)
 
     const reservation = await ReserveBook.create({
       book: bookId,

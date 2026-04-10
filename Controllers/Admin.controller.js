@@ -334,7 +334,6 @@ export const issueBook = async (req, res) => {
 //admin will get details of book [title, category, author, totalCopies, availableCopies]
 export const getBooksForAdmin = async (req, res) => {
   try {
-<<<<<<< HEAD
     const { category } = req.query;
     const pagination = getOffsetPagination(req.query);
 
@@ -354,11 +353,6 @@ export const getBooksForAdmin = async (req, res) => {
     }
     const totalCount = await Book.countDocuments(filter);
     const books = await Book.find(filter).select(
-=======
-    const bookId = req.params.id;
-
-    const books = await Book.findById(bookId).select(
->>>>>>> e4db7bc86e70edb02d6fe4630e50aa6ec129f1cd
       "title author totalCopies availableCopies category",
     )
       .skip(offset)
@@ -443,14 +437,8 @@ export const getAllStudent = async (req, res) => {
     if (department) {
       filter.department = department
     }
-<<<<<<< HEAD
     const totalCount = await User.countDocuments(filter);
     const students = await User.find(filter).skip(offset).limit(limit);
-=======
-    
-    
-    const students = await User.find(filter);
->>>>>>> e4db7bc86e70edb02d6fe4630e50aa6ec129f1cd
     res
       .status(200)
       .json({

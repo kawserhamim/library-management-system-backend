@@ -21,7 +21,7 @@ const getOffsetPagination = (query) => {
 //student will get details of book [title, category, author] by category
 export const getBooksForStudent = async (req, res) => {
   try {
-<<<<<<< HEAD
+
     const { category } = req.query;
     const pagination = getOffsetPagination(req.query);
 
@@ -55,18 +55,6 @@ export const getBooksForStudent = async (req, res) => {
       data:books,
       userId:req.user,
     })
-=======
-    const {category} = req.query;
-    let filter = {};
-    if(category){
-      filter.category = {$regex:category, $options:"i"}
-    }
-    const books = await Book.find(filter).select("title author  category");
-    if(!books){
-      res.status(401).json({message:"No book found for this category..!", status:false});
-    }
-    res.status(201).json({message:"Book found..!", success:true, data:books})
->>>>>>> e4db7bc86e70edb02d6fe4630e50aa6ec129f1cd
   } catch (error) {
     res.status(500).json({message:"Error in getting books for admin", err:error.message, status:false})
   }
